@@ -14,11 +14,11 @@ function promptSideLength () {
 function drawCanvas(intSideLength) {
   document.querySelector(".canvas").innerHTML = ""; 
   for (let i = 0; i < (intSideLength * intSideLength); i++) {
-    drawCanvasElement(intSideLength);
+    drawCanvasElement(intSideLength, i);
   }
 }
 
-function drawCanvasElement(intSideLength) {
+function drawCanvasElement(intSideLength, intId) {
   if (!(intSideLength > 1 && intSideLength <= 100)) {
     return;
   }
@@ -27,4 +27,19 @@ function drawCanvasElement(intSideLength) {
   dom_canvas.appendChild(dom_pixel);
   dom_pixel.classList.add("pixel");
   dom_pixel.style = strStyleWidth;
+  dom_pixel.id = "pixel_" + intId;
+  dom_pixel.addEventListener('click', () => {
+    togglePainted("pixel_" + intId);
+  })
+  dom_pixel.addEventListener('mousedown', () => {
+    togglePainted("pixel_" + intId);
+  })
+  dom_pixel.addEventListener('mousemove', () => {
+    togglePainted("pixel_" + intId);
+  })
+}
+
+function togglePainted(strId) {
+  const source = document.querySelector("#"+strId);
+  source.classList.add("painted");
 }

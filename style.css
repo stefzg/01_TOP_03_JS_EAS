@@ -129,10 +129,13 @@ container.canvas {
 	flex-wrap:wrap;
 	border: 1px solid red;
 }
-
-.canvas>div {
-	background:white;
+.painted:hover {
+	background: darkred;
 }
 .canvas>div:hover {
 	background: pink;
 }
+.painted {
+	background: black;
+}
+
